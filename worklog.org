@@ -1,0 +1,67 @@
+* <2016-07-18 Mon>
+** DONE Talk with Jens, report my work status and ask for futher tasks
+   CLOSED: [2016-07-18 Mon 13:11]
+** DONE Get a hold of the qamp board and its relevant devices.
+   CLOSED: [2016-07-19 Tue 16:22]
+** DONE Figure out how to flash FPGA via Xilinx FPGA programmer.
+   CLOSED: [2016-07-19 Tue 16:22]
+
+* <2016-07-19 Tue>
+
+** DONE How to manually update a fresh QAmplifier Board.
+   CLOSED: [2016-07-19 Tue 16:22]
+
+* <2016-07-20 Wed>
+** DONE Maybe try to debug the failure of qamp-application-tests
+   CLOSED: [2016-07-26 Tue 09:17]
+   - Note taken on [2016-07-26 Tue 09:19] \\
+     Jens said that there is no need to solve problems that could be avoided by installing a faster pc.
+     Hence replacing a new dataserver-pc is the top one task now.
+** DONE Replaced dataserver-pc on the QAmp-TestSystem
+   CLOSED: [2016-07-20 Wed 12:53]
+** DONE Start and check the jenkins build results after changing the new dataserver-pc
+   CLOSED: [2016-07-27 Wed 08:16]
+** DONE Introduction of registering work time from Michille and Jens.
+   CLOSED: [2016-07-26 Tue 09:21]
+
+* <2016-07-26 Tue>
+** DONE Continue with jenkins build
+   CLOSED: [2016-07-27 Wed 08:16]
+** DONE Fill out my time registration
+   CLOSED: [2016-07-26 Tue 11:38]
+* <2016-07-27 Wed>
+** DONE Discuss with Jens about next task since qamp-dataserver pc is up and running
+   CLOSED: [2016-07-27 Wed 08:50]
+** DONE To buy a java book
+   CLOSED: [2016-08-01 Mon 15:18]
+** IN-PROGRESS Look into burn in test failure
+* <2016-08-01 Mon>
+** DONE 1 hour Java Garbage Collection Basics
+   CLOSED: [2016-08-01 Mon 15:18]
+** TODO Install a new test bench PC
+** DONE Import old data from the dataserver PC to the new one
+   CLOSED: [2016-08-01 Mon 15:18]
+
+
+## ======================================================================
+* <2016-08-04 Thu>
+** IN-PROGRESS Learn rrdmontools, how to create .run file
+** IN-PROGRESS Use clonezilla to copy hard drive
+
+** DONE Learn sed (global) substitution
+   CLOSED: [2016-08-04 Thu 16:12]
+** DONE Learn SFX - self extracting installer (*.run file in the *.iso image file)
+   CLOSED: [2016-08-04 Thu 16:13]
+** DONE Learn Ubuntu server cd customization
+   CLOSED: [2016-08-04 Thu 16:14]
+** DONE Short mysql video tutorial
+   CLOSED: [2016-08-04 Thu 16:15]
+** DONE Learn clonezilla & gparted, and their live USB creation
+   CLOSED: [2016-08-04 Thu 16:15]
+** DONE Learn fdisk (command line tool for creating partitions)
+   CLOSED: [2016-08-04 Thu 16:16]
+
+* TODO
+** FPGA led is not turnning off after a 12H burn in test.
+** Test board test will restore FPGA back to the correct state, however redboot 
+will timeout.
