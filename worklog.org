@@ -33,20 +33,47 @@
 ** DONE Discuss with Jens about next task since qamp-dataserver pc is up and running
    CLOSED: [2016-07-27 Wed 08:50]
 ** DONE To buy a java book
-   CLOSED: [2016-08-01 Mon 15:18]
-** IN-PROGRESS Look into burn in test failure
+   CLOSED: [2016-08-01 Mon 15
+** DONE Look into burn in test failure
+   CLOSED: [2016-08-17 Wed 09:39]
 * <2016-08-01 Mon>
 ** DONE 1 hour Java Garbage Collection Basics
    CLOSED: [2016-08-01 Mon 15:18]
-** TODO Install a new test bench PC
 ** DONE Import old data from the dataserver PC to the new one
    CLOSED: [2016-08-01 Mon 15:18]
 
 
 ## ======================================================================
+** TODO Install a new test bench PC
 * <2016-08-04 Thu>
-** IN-PROGRESS Learn rrdmontools, how to create .run file
-** IN-PROGRESS Use clonezilla to copy hard drive
+** DONE Learn rrdmontools & how to create .run file
+   CLOSED: [2016-08-05 Fri 10:07]
+   - Note taken on [2016-08-05 Fri 10:08] \\
+     *.run file is SFX (Self-Extracted installer) that will be installed via
+      "last-command" in the very last step of installing Ubuntu server.
+   - Note taken on [2016-08-05 Fri 10:07] \\
+     rrdmontools is a third party package mainly for monitoring the system status.
+** DONE Use clonezilla to copy hard drive
+   CLOSED: [2016-08-05 Fri 10:09]
+   - Note taken on [2016-08-05 Fri 10:09] \\
+     Created two live USB stick, for clonezilla and gparted.
+
+     Clonezilla is used to clone all the data from the source hard drive (4TB) to the
+     target hard drive (10TB) which will automatically be partitioned into a 4TB
+     partition.
+
+     Then Gparted is used to resize the target hard drive from 4TB back to 10TB.
+     - SwapOff "Linux-swap" partition. Actually not needed, since we booted from
+       gparted live usb and this partition was was not mounted at the first place.
+     - Delete "Linux-swap" partition. Now you will have a pretty big unallocated
+       partition.
+     - Apply operation.
+     - Create a new "Linux-swap" partition at the end of the hard drive. SWAP = 2 *
+       RAM.
+     - Apply operation.
+     - Resize/extend the "data" partition all the way to the rest unallocated
+       partition.
+     - Apply operation.
 
 ** DONE Learn sed (global) substitution
    CLOSED: [2016-08-04 Thu 16:12]
@@ -61,7 +88,94 @@
 ** DONE Learn fdisk (command line tool for creating partitions)
    CLOSED: [2016-08-04 Thu 16:16]
 
-* TODO
+* <2016-08-08 Mon>
+** DONE Learn Debian package system
+   CLOSED: [2016-08-08 Mon 14:22]
+   - Note taken on [2016-08-08 Mon 14:22] \\
+     FPM is a ruby package used to create the sophion debian package.
+     Need to learn that tool as well.
+   - What is a Debian package?
+   - How to create/modify/remove a simple Debian package?
+** DONE Try to install the sophion debian package in the Ubuntu installed in VirtualBox
+   CLOSED: [2016-08-10 Wed 09:28]
+   - Note taken on [2016-08-10 Wed 09:29] \\
+     Maybe you also want to learn how to create a debian package from scratch.
+* <2016-08-09 Tue>
+* <2016-08-10 Wed>
+** DONE Learn the back scene of installing a debian package
+   CLOSED: [2016-08-17 Wed 09:38]
+** DONE Learn how to compile java unittest, expecially for BurnInTest.class
+   CLOSED: [2016-08-17 Wed 09:38]
+   - Note taken on [2016-08-09 Tue 10:21] \\
+     Jenkins ->  Qube -> 2.x -> UpdatePackage -> unittestfiles.zip
+     -> unittestfiles-extract -> lib -> BurnInTest.class
+** DONE What and where is ShortVoltageProtocol.zip file?
+   CLOSED: [2016-08-10 Wed 09:30]
+   - Note taken on [2016-08-10 Wed 09:30] \\
+     ShortVolatgeProtocol.zip
+       - Plan.xml
+     It could be loaded into ViewPoint for visualizing the waeveform.
+     It is exactly the same as the command seen in the log.
+     waveform -i 0 -c -s 250,0,0 -s 5,0,-500 -s 2495,-500,500 -s 5,500,0 -z
+** DONE To understand more about java G1 GC logs
+   CLOSED: [2016-08-17 Wed 09:39]
+   - Note taken on [2016-08-10 Wed 12:40] \\
+     https://blogs.oracle.com/poonam/entry/understanding_g1_gc_logs
+
+* <2016-08-17 Wed>
+** IN-PROGRESS Run another BurnInTest together with WireShark capture enabled.
+** DONE Install a new Ubuntu PC 16.04 LTS for a backup test bench.
+   CLOSED: [2016-08-17 Wed 16:27]
+   - Note taken on [2016-08-17 Wed 16:27] \\
+     Still need to install the debian package on it before using it.
+** DONE Meeting with Jens.
+   CLOSED: [2016-08-17 Wed 16:28]
+
+** DONE Learnt how to add a wireshark custom protocol, aka. wireshark dissector.
+   - Note taken on [2016-08-17 Wed 16:30] \\
+     Martin has already created a Qamp dissector on mha-linux. I could re-use his work then. :)
+   https://www.wireshark.org/docs/wsdg_html_chunked/ChDissectAdd.html
+   CLOSED: [2016-08-17 Wed 16:28]
+* <2016-08-18 Thu>
+** DONE BurnInTest Error Analysis
+  CLOSED: [2016-08-25 Thu 09:24]
+** DONE Inform the error analysis results to Jens
+   CLOSED: [2016-08-25 Thu 09:24]
+** DONE Reading code base
+   CLOSED: [2016-08-25 Thu 09:23]
+* <2016-08-25 Thu>
+** TODO Fix testbench by changing t_global_setting:mode to MCLD
+** DONE Try to execute a 12-hour BurnIntest
+   CLOSED: [2016-09-05 Mon 15:29]
+   - Note taken on [2016-09-05 Mon 15:29] \\
+     With new test bench, running 12H BurnInTest is fine. But still I would like to
+     try more rounds before we can conclude that BurnInTest is fully functional.
+     And if that is the case, maybe we could change back to the old manner. Even Jens
+     does not think it is really necessary.
+* <2016-09-05 Mon>
+** DONE Finished all BurnInTest related python scripts checkin.
+   CLOSED: [2016-09-05 Mon 15:37]
+** DONE Started another 12H BurnInTest on 6 boards.
+   CLOSED: [2016-09-05 Mon 15:37]
+** DONE Learnt how to change python sh module log level by using logging module.
+   CLOSED: [2016-09-05 Mon 15:37]
+** DONE Getting used to git svn routine.
+   CLOSED: [2016-09-05 Mon 15:37]
+** DONE Found out that init_qamp.ini is utilized on the test_boards test.
+   CLOSED: [2016-09-05 Mon 15:35]
+   - Note taken on [2016-09-05 Mon 15:35] \\
+     /home/tools/init_qamp.ini can be copied from the old test bench. But it
+     needs further understanding, since it is messing up with BurnInTest now.
+** DONE Tried test board test and it did not work well.
+   CLOSED: [2016-09-05 Mon 15:36]
+   - Note taken on [2016-09-05 Mon 15:38] \\
+     It complains about mongoose cannot be started on port 80.
+     My current understanding about mongoose is that it is a simple webserver.
+     But what does it do for test board test?
+     I need to find out in the coming week or so.
+* PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
-** Test board test will restore FPGA back to the correct state, however redboot 
-will timeout.
+** Test board test will restore FPGA back to the correct state, however redboot
+   will timeout.
+* NOTE
+** waveform -i 0 -c -s 250,0,0 -s 5,0,-500 -s 2495,-500,500 -s 5,500,0 -z
