@@ -200,7 +200,48 @@
 ** DONE Introduced renaming log folder in case of BurnInTest failure.
    CLOSED: [2016-09-09 Fri 09:40]
 ** TODO Try to remove listener in the BurnInTest
+** DONE Read confluence document about testbench harware specs
+   CLOSED: [2016-09-12 Mon 11:20]
+   - Note taken on [2016-09-12 Mon 11:20] \\
+     It seems that the power supply is OK as I suspected.
+* <2016-09-12 Mon>
+** DONE Take a closer look at OpenAmplifierTest
+   CLOSED: [2016-09-13 Tue 21:03]
+** DONE Unerstand OpenAmplifierTest plan file - OpenAmpAction.zip
+   CLOSED: [2016-09-13 Tue 21:03]
+** DONE Note: no starttime argument in the runwaveform command
+   CLOSED: [2016-09-13 Tue 21:03]
+   - Note taken on [2016-09-13 Tue 21:03] \\
+     There is a default starttime if it is not defined or given.
+* <2016-09-13 Tue>
+** DONE BurnInTest is working with the latest actioneditortest.jar
+   CLOSED: [2016-09-13 Tue 21:05]
+** DONE init_qamp.py test is working with the old qamp-application and qamp-fpga
+   CLOSED: [2016-09-13 Tue 21:06]
+** DONE Now it is a mix on the new testbench pc
+   CLOSED: [2016-09-13 Tue 21:06]
+   - Note taken on [2016-09-13 Tue 21:07] \\
+     Jens is going to do a BurnInTest tomorrow and I would like to use the new
+     BurnInTest. But also we need to make init_qamp.py test working. Hence the
+     current solution is a mix between these two. I need to locate the bad
+     commit that breaks init_qamp.py test.
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
 ** waveform -i 0 -c -s 250,0,0 -s 5,0,-500 -s 2495,-500,500 -s 5,500,0 -z
+** OpenAmplifierTest
+***  waveform -i 22 -c -s 100,0,500 -s 200,500,-500 -s 200,-500,500 -s 100,500,0 -z; boards: 0,; ;
+*** runwaveform -i 22 -r -c 0xffffffff -t 0; boards: 0,; ;
+*** version info from the working deb package 0.98
+*** QAmp> version
+    (0) OK
+    (0) Prompt version 4
+    (0) Version 1.0.0.37358 (build #1894)
+    (0) FPGA version 1.09 (build #840, SVN rev: 34412)
+    (0) AT91Bootstrap version 0.0.1 (jenkins build:1354 svn:36779)
+    (0) RedBoot version 1.2 (svn: 35704 build: 1568 timestamp: 1568)
+    (0) Capability: random-cmd
+    (0) Capability: high-capcomp
+    (0) END
+    QAmp>
+
