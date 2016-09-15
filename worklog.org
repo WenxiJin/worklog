@@ -44,7 +44,8 @@
 
 
 ## ======================================================================
-** TODO Install a new test bench PC
+** DONE Install a new test bench PC
+   CLOSED: [2016-09-14 Wed 22:52]
 * <2016-08-04 Thu>
 ** DONE Learn rrdmontools & how to create .run file
    CLOSED: [2016-08-05 Fri 10:07]
@@ -144,7 +145,8 @@
 ** DONE Reading code base
    CLOSED: [2016-08-25 Thu 09:23]
 * <2016-08-25 Thu>
-** TODO Fix testbench by changing t_global_setting:mode to MCLD
+** DONE Fix testbench by changing t_global_setting:mode to MCLD
+   CLOSED: [2016-09-14 Wed 22:53]
 ** DONE Try to execute a 12-hour BurnIntest
    CLOSED: [2016-09-05 Mon 15:29]
    - Note taken on [2016-09-05 Mon 15:29] \\
@@ -196,7 +198,8 @@
    will timeout.
 
 * <2016-09-09 Fri>
-** TODO Find out why Qamp board could not finish the command
+** DONE Find out why Qamp board could not finish the command
+   CLOSED: [2016-09-14 Wed 22:53]
 ** DONE Introduced renaming log folder in case of BurnInTest failure.
    CLOSED: [2016-09-09 Fri 09:40]
 ** TODO Try to remove listener in the BurnInTest
@@ -225,6 +228,35 @@
      BurnInTest. But also we need to make init_qamp.py test working. Hence the
      current solution is a mix between these two. I need to locate the bad
      commit that breaks init_qamp.py test.
+* <2016-09-14 Wed>
+** DONE Executed BurnInTest for 8 boards
+   CLOSED: [2016-09-14 Wed 22:34]
+** DONE Installed Ubuntu 16.04 on mha-linux
+   CLOSED: [2016-09-14 Wed 22:37] DEADLINE: <2016-09-14 Wed>
+** DONE Inspected the BurnInTest failure logs
+   CLOSED: [2016-09-14 Wed 22:38]
+* <2016-09-15 Thu>
+** DONE Learn how to use wireshark capture via command line
+   CLOSED: [2016-09-15 Thu 22:03] DEADLINE: <2016-09-15 Thu>
+   - Note taken on [2016-09-15 Thu 22:03] \\
+     sudo apt-get install tshark
+     tshark --help
+     tshark -i eth1 -f "host 10.222.156.25" -b filesize:10000 -w tshark_output
+** DONE Modify the BurnInTest script to use wireshark capture
+   CLOSED: [2016-09-15 Thu 22:05] DEADLINE: <2016-09-15 Thu>
+   - Note taken on [2016-09-15 Thu 22:05] \\
+     Run tshark in another shell
+** DONE Training session about QMS
+   CLOSED: [2016-09-15 Thu 22:05] DEADLINE: <2016-09-15 Thu>
+** DONE Remove the failed Qamp board, rerun BurnInTest again
+   CLOSED: [2016-09-15 Thu 22:05] DEADLINE: <2016-09-15 Thu>
+   - Note taken on [2016-09-15 Thu 22:06] \\
+     After removed the failed Qamp.board6. The test still failed pretty quickly.
+     Decrease the number of boards down to 2.
+** DONE Try to understand why FPAGclock - CPUclock = 512
+   CLOSED: [2016-09-15 Thu 22:07] DEADLINE: <2016-09-15 Thu>
+   - Note taken on [2016-09-15 Thu 22:07] \\
+     My suspicion is power supply is not strong enough for 8 boards at the same time.
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
