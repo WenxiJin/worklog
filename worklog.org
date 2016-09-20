@@ -257,6 +257,30 @@
    CLOSED: [2016-09-15 Thu 22:07] DEADLINE: <2016-09-15 Thu>
    - Note taken on [2016-09-15 Thu 22:07] \\
      My suspicion is power supply is not strong enough for 8 boards at the same time.
+* <2016-09-16 Fri>
+** DONE Checked 2 boards BurnInTest yesterday, and both went well
+   CLOSED: [2016-09-16 Fri 20:56]
+** DONE Executed another round of BurnInTest for 7 boards for 12H
+   CLOSED: [2016-09-16 Fri 20:57]
+** DONE The failure is not due to lack of power.
+   CLOSED: [2016-09-16 Fri 20:58]
+** DONE Learnt VHDL tutorial
+   CLOSED: [2016-09-16 Fri 20:58]
+** DONE Trying to understand LED D7, D8 of FPGA, what are they indicating.
+   CLOSED: [2016-09-16 Fri 20:58]
+* <2016-09-20 Tue>
+** DONE Executed another BurnInTest for 6 boards
+   CLOSED: [2016-09-20 Tue 14:40]
+** DONE Created a test-wjn.ini for local BurnInTest. Special for defected channel P1.
+   CLOSED: [2016-09-20 Tue 14:42]
+** DONE Understood a little bit about powerCycle
+   CLOSED: [2016-09-20 Tue 14:42]
+** DONE Asked Jens about LabView
+   CLOSED: [2016-09-20 Tue 14:42]
+** DONE Fixed Calibration QAmp test
+   CLOSED: [2016-09-20 Tue 14:43]
+   - Note taken on [2016-09-20 Tue 14:43] \\
+     After switching the USB cable of the calibration board. Everything went smooth.
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
