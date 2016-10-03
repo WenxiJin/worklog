@@ -281,6 +281,126 @@
    CLOSED: [2016-09-20 Tue 14:43]
    - Note taken on [2016-09-20 Tue 14:43] \\
      After switching the USB cable of the calibration board. Everything went smooth.
+* <2016-10-03 Man>
+** TODO Recap on stressful test
+   - Note taken on [2016-10-03 Man 22:26] \\
+     Currently Qamp stressful test is the most failing junit test. After some
+     investigation, I am going to try to recap it.
+
+     1. What is Qamp stressful test?
+     In short, it runs 3 rounds of the commands below. QAmp> waveform QAmp>
+     runwaveform
+
+     After each data transfer, the amount of data and transder rate will be asserted.
+     assertGreatTrue(data, 3200000) assertGreatTrue(transderrate, 3200kb/s)
+
+     QAmp> error -l And then, assertTrue(errors, 0)
+
+     2. What is the failure?
+     Among 12 QAmp boards, around 3 to 4 boards will throw out error msg like
+     [DATA_INVALID] Network performance too slow.
+
+     So the test will fail during assertTrue(errors, 0)
+
+     However, it only fails when the test is executed on the qamp-dataserver-1
+     jenkins node. If it is executed on qamp-ctrl-pc, it can be finished OK.
+
+     3. Why it fails?
+     After comparing the failure.log (qamp-dataserser-1) and ok.log (qamp-ctrl-pc), I
+     noticed that the failed boards have longer data transfer time while the other
+     boards transfer more often on ubuntu pc.
+
+     On windows pc, all the boards more or less transfer equally. Or should I say
+     fairness here?
+
+     Also it is an indication that qamp application should probably not to be blamed
+     for this failure.
+
+     My personal thoughts is that it is due to the difference of cpu scheduler
+     running on windows pc (round robin, as far as I know) and ubuntu (normally 3
+     kinds listed below)
+
+     *noop* is often the best choice for memory-backed block devices (e.g. ramdisks)
+     and other non-rotational media (flash) where trying to reschedule I/O is a waste
+     of resources
+
+     *deadline* is a lightweight scheduler which tries to put a hard
+     limit on latency
+
+     *cfq* tries to maintain system-wide fairness of I/O bandwidth
+
+     I will try to change the scheduler to see if it gives a difference·
+
+     4. WireShark challenge
+     qamp-dataserser-1 is a ubuntu-server, not desktop version. only "tshark" can be
+     used to capture the packets. It stands for terminal wireshark.
+
+     At first, I tried to capture all 12 boards which yeilds around 900MB pcap file.
+     Which later I almost cannot open in wireshark, it simply irresponding.
+
+     Of course, I could filter specific boards. Since the failed boards are random.
+     Hence it is slightly difficult to choose the ip. I will just try to capture
+     10.222.156.129, which is board 9. Until now, it is the most failed one.
+
+     However I don't think we could benefit very much from this. Since we already
+     know the reason is that QAmp generates data too fast (overrides the circular
+     buffer) while the dummy folder server is not handling the data.
+
+     5. Issue regarding dummy folder server
+     handle() inside dummy folder server will be invoked for each of the tcp
+     connection (each tcp connection is a thread).
+
+     Inside the handle(), it is something like
+
+     #+BEGIN_SRC java
+     while(true) {
+         inputStream.get()
+
+         // read 9 integers which are header info
+         while(data < 9) {
+             imputStream.read()
+         }
+
+         // consuming the remaining chunk of data
+         while (remaining > 0) {
+             inputStream.read()
+         }
+     }
+     #+END_SRC
+
+     Please ignore the details, it is just a code snippet.
+     As I limited knowledge in java, inputStream.read() is a blocking method, let alone
+     it is inside while(true) loop.
+
+     It is highly possible that one thread will continue reading data on its tcp
+     connection, let the other threads starve. For some reason, windows os averages
+     them better than ubuntu in this specific case.
+
+     But I personally think while(true) plus blocking inputStream.read() is bad.
+
+     6. Possible solution
+     a. Quickest - Use qamp-ctrl-pc for this test.
+
+     b. Try to use java.nio non-blocking class, for handling tcp connection. But I am
+     complete new to it. Needs time to read it and try to use it in the dummy folfer
+     server.
+     http://tutorials.jenkov.com/java-nio/index.html
+     Hard to say if it will solve this problem. Anyone who used java.nio class might give a hint. ;)
+
+     c. Apply fairness on 12 tcp connections, but fairness is also having some
+     drawback in this case.
+
+     As stated at http://stackoverflow.com/questions/3940164/java-waiting-on-synchronized-block-who-goes-first
+     "Fairness comes at a cost, and the predictability is achieved at the expense of
+     big throughput drop."
+
+     Also it is not what we are doing in the real scenario, then the test become pointless.
+
+     // ************************************************************************
+     Thanks for your valuable time for reading this.
+     Welcome any comment and suggestion.
+     Any correction would be appreciated, I am still learning. ;)
+
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
