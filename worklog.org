@@ -401,6 +401,15 @@
      Welcome any comment and suggestion.
      Any correction would be appreciated, I am still learning. ;)
 
+* <2016-10-25 Tue>
+** DONE Replace ignore clipped data in the database by disabling debug mode and sweeping voltage
+   CLOSED: [2016-10-26 Wed 11:18]
+** DONE Figure out how to get the golden data file
+   CLOSED: [2016-10-26 Wed 13:05]
+** DONE Try to replace the golden data file with the right one
+   CLOSED: [2016-10-26 Wed 13:06]
+** DONE Figure out how many junit tests are using debug mode
+   CLOSED: [2016-10-26 Wed 11:18]
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
