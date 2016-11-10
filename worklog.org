@@ -410,6 +410,76 @@
    CLOSED: [2016-10-26 Wed 13:06]
 ** DONE Figure out how many junit tests are using debug mode
    CLOSED: [2016-10-26 Wed 11:18]
+* <2016-10-27 Thu>
+** DONE Find out why QAmp boards sometimes cannot complete "server" commands
+   CLOSED: [2016-10-27 Thu 10:51]
+   - Note taken on [2016-10-27 Thu 10:51] \\
+     svn+ssh://svn.sophion.net/svn/Qube/Working/qamp/testsystem
+     
+     # changeset
+     r47137 | ndy | 2016-09-13 13:44:41 +0200 (Tue, 13 Sep 2016) | 1 line
+     
+     // Disabled all channels on board 8 (column 17-18) because the board does not answer to the reset command QUBE-6614
+   java.lang.Exception: Command failed because no amplifier boards completed the command 'server'
+	at com.sophion.qube.devices.amplifier384.Command.waitForCompletion(Command.java:384)
+	at com.sophion.qube.devices.amplifier384.Amplifier384Controller.setDataServer(Amplifier384Controller.java:614)
+	at com.sophion.qube.devices.amplifier384.Amplifier384Controller.initialize(Amplifier384Controller.java:167)
+	at com.sophion.qube.devices.amplifier384.Amplifier384Controller.<init>(Amplifier384Controller.java:89)
+	at com.sophion.qube.devices.amplifier384.Amplifier384Device.connect(Amplifier384Device.java:273)
+	at com.sophion.qube.actionexecutionengine.model.Device.doWakeFromStandbyState(Device.java:1401)
+	at com.sophion.qube.actionexecutionengine.model.Device$9.doHandle(Device.java:183)
+	at com.sophion.qube.actionexecutionengine.model.Device$9.doHandle(Device.java:175)
+	at com.sophion.general.asyncmessaging.AsyncMessagingThread$MessageHandlerMethodWithReturn.handle(AsyncMessagingThread.java:68)
+	at com.sophion.general.asyncmessaging.AsyncMessagingThread$1.run(AsyncMessagingThread.java:191)
+	at com.biolinscientific.common.threads.TriggeredTask$2.run(TriggeredTask.java:316)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+** TODO Verify everything is OK in the jenkins job
+** DONE Trace down the A17-P18 board failure tests
+   CLOSED: [2016-11-01 Tue 10:54]
+   - Note taken on [2016-11-01 Tue 10:54] \\
+     It is disabled due to VoltageProtocolTest.testNoncontinuousRamp.
+* <2016-11-01 Tue>
+** DONE Golden data mismatch on some channels.
+   CLOSED: [2016-11-10 Thu 14:00]
+   - Note taken on [2016-11-10 Thu 14:00] \\
+     The issue is that the windows pc is a danish version, hence it uses comma instead of dot.
+   - Note taken on [2016-11-02 Wed 13:25] \\
+     * Works fine on the datapc but not on the ctrlpc
+     *  VoltageProtocolTest requires 4.5GB for the actual data
+     * Ctrlpc is out of space.
+** DONE Some channels received zero data - testNoncontinuousRamp().
+   CLOSED: [2016-11-10 Thu 14:01]
+   - Note taken on [2016-11-10 Thu 14:01] \\
+     The same reason of golden data mismatch.
+** DONE QAmp is still EXECUTOR which should be STOPPED state - testFailingBoard(), testLongSlowRamp().
+   CLOSED: [2016-11-10 Thu 14:01]
+   - Note taken on [2016-11-10 Thu 14:01] \\
+     Too many log could lead to this issue.
+** DONE VeryLongWaveformTest is the previous test.
+   CLOSED: [2016-11-10 Thu 14:02]
+   - Note taken on [2016-11-10 Thu 14:02] \\
+     None related. Wrong observation.
+** DONE actionOutcome.isResultsComplete() did not complete on time.
+   CLOSED: [2016-11-10 Thu 14:02]
+   - Note taken on [2016-11-10 Thu 14:02] \\
+     JUnit test running on the ctrl pc could be slightly slower than running on the
+     data pc. Also it missed the second round of checking if the action outcome is
+     completed or not. The fix is that we query action outcome again proactively.
+| test                              | failure                                                                                        |
+|-----------------------------------+------------------------------------------------------------------------------------------------|
+| testVoltageProtocolOnSomeChannels | actionOutcome.isResultsComplete() did not complete on time. waitedTime: 100000 timeout: 100000 |
+| testComplexWaveform               | Data did not match golden data. channels: A1                                                   |
+| testNoncontinuousRamp             | Data did not match golden data. channels: A1                                                   |
+| testFailingBoard                  | Check amount of data received                                                                  |
+| testLongSlowRamp                  | Check amount of data received                                                                                               |
+
+
+** DONE Cleanup ctrlpc
+   CLOSED: [2016-11-02 Wed 15:38]
+   - Note taken on [2016-11-10 Thu 14:04] \\
+     Niels helped me clean up the ctrl pc. Now it is 75% free of disk space.
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
