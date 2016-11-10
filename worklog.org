@@ -480,6 +480,10 @@
    CLOSED: [2016-11-02 Wed 15:38]
    - Note taken on [2016-11-10 Thu 14:04] \\
      Niels helped me clean up the ctrl pc. Now it is 75% free of disk space.
+
+* <2016-11-10 Thu>
+** TODO Investigate windows device driver.
+
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
