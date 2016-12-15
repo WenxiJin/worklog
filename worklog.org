@@ -483,7 +483,20 @@
 
 * <2016-11-10 Thu>
 ** TODO Investigate windows device driver.
-
+* <2016-12-14 Wed>
+** DONE Figured out why the integrated combiend action does not work
+   CLOSED: [2016-12-15 Thu 10:01]
+** DONE Test and debug on the test system
+   CLOSED: [2016-12-15 Thu 10:01]
+** DONE Discussed with Mikkel about showing parameter and parameter set at the same time
+   CLOSED: [2016-12-15 Thu 10:02]
+** DONE Jens helped me verified the RSCOMP and LeakCalibration to a certain degree
+   CLOSED: [2016-12-15 Thu 10:02]
+* <2016-12-15 Thu>
+** DONE Checked and updated jenkins failed builds
+   CLOSED: [2016-12-15 Thu 09:58]
+** TODO Display parameter and parameter set at the same time for the combined action
+** TODO 
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
