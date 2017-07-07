@@ -495,8 +495,18 @@
 * <2016-12-15 Thu>
 ** DONE Checked and updated jenkins failed builds
    CLOSED: [2016-12-15 Thu 09:58]
-** TODO Display parameter and parameter set at the same time for the combined action
-** TODO 
+** DONE Display parameter and parameter set at the same time for the combined action
+   CLOSED: [2017-07-07 Fri 11:29]
+* <2017-07-07 Fri>
+** DONE Tested out the new datapc and ctrlpc installation guides
+   CLOSED: [2017-07-07 Fri 11:31]
+   - Note taken on [2017-07-07 Fri 11:31] \\
+     ctrlpc clonezilla image does not contain a fixed ip address, i.e. 10.222.156.2
+** DONE Removed debug log in BlockVoltageProtocol.java
+   CLOSED: [2017-07-07 Fri 11:30]
+** TODO Improve combined measurement action
+** TODO Check jira todo list
+
 * PENDING
 ** FPGA led is not turnning off after a 12H burn in test.
 * NOTE
